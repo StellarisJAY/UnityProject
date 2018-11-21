@@ -4,28 +4,33 @@ using UnityEngine.UI;
 
 public class CameraSwitch : MonoBehaviour
 {
-    public GameObject[] objects;
-    public Text text;
-
-    private int m_CurrentActiveObject;
-
-
-    private void OnEnable()
+    public GameObject firstPersonCam;
+    public GameObject thirdPersonCam;
+    public GameObject currentCam;
+    public void Start()
     {
-        text.text = objects[m_CurrentActiveObject].name;
+        firstPersonCam = GameObject.Find("FirstPersonCam");
+        thirdPersonCam = GameObject.Find("ThirdPersonCam");
+        currentCam = thirdPersonCam;
     }
-
-
-    public void NextCamera()
+    
+    public void Update()
     {
-        int nextactiveobject = m_CurrentActiveObject + 1 >= objects.Length ? 0 : m_CurrentActiveObject + 1;
-
-        for (int i = 0; i < objects.Length; i++)
+    
+    }
+    
+    private void SwitchCamera()
+    {
+        if(Input.GetKeyDown(KeyCode.F1))
         {
-            objects[i].SetActive(i == nextactiveobject);
+            if(currentCam == firstPerosonCam)
+            {
+                
+            }
+            else
+            {
+            
+            }
         }
-
-        m_CurrentActiveObject = nextactiveobject;
-        text.text = objects[m_CurrentActiveObject].name;
     }
 }
